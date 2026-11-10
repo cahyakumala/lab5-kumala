@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listening to Vancouver</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- External JavaScript -->
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <header class="hero">
+        <nav>
+            <a href="#" class="logo">LISTENING TO VANCOUVER</a>
+            <a href="#explore">Explore the City ↓</a>
+        </nav>
+
+        <div class="hero-content">
+            <p class="eyebrow">AN INTERACTIVE SOUND JOURNEY</p>
+            <h1>Listening to Vancouver</h1>
+            <p>
+                Every place has its own rhythm.
+                Discover Vancouver through its everyday sounds,
+                from peaceful natural spaces to busy city streets.
+            </p>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="intro">
+            <h2>A city beyond what we see.</h2>
+            <p>
+                This project explores the atmosphere of Vancouver
+                through sound and interactive visuals.
+                Listen, explore, and discover the different
+                feelings of each location.
+            </p>
+        </section>
+
+        <!-- Soundscape section -->
+        <section class="audio-section">
+            <h2>Vancouver Soundscape</h2>
+            <p>
+                A 60–90 second audio journey through the city.
+            </p>
+
+            <audio id="cityAudio" src="audio/vancouver-soundscape.mp3"></audio>
+
+            <div class="audio-controls">
+                <button id="playButton">▶ Play</button>
+                <button id="pauseButton">Ⅱ Pause</button>
+                <span id="audioStatus">Audio draft</span>
+            </div>
+        </section>
+
+        <!-- Interactive locations -->
+        <section id="explore" class="explore-section">
+
+            <p class="eyebrow">EXPLORE DIFFERENT ATMOSPHERES</p>
+            <h2>Choose a place</h2>
+
+            <div class="location-buttons">
+                <button class="location-button active" data-location="park">
+                    Stanley Park
+                </button>
+
+                <button class="location-button" data-location="downtown">
+                    Downtown
+                </button>
+
+                <button class="location-button" data-location="waterfront">
+                    Waterfront
+                </button>
+            </div>
+
+            <div class="location-card">
+                <img
+                    id="locationImage"
+                    src="https://images.unsplash.com/photo-1511497584788-876760111969?w=1000"
+                    alt="Green forest"
+                >
+
+                <div class="location-info">
+                    <p id="locationLabel">01 / NATURE</p>
+                    <h3 id="locationTitle">Stanley Park</h3>
+                    <p id="locationDescription">
+                        A peaceful natural space surrounded by
+                        trees, fresh air, birds, and the sound of wind.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Listening to Vancouver · Interactive Media Lab 5 · 2026</p>
+    </footer>
+
+</body>
+</html>
