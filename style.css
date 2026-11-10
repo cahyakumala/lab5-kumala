@@ -1,0 +1,216 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f2ed;
+    color: #263b35;
+    line-height: 1.6;
+}
+
+/* Hero section */
+.hero {
+    min-height: 70vh;
+    padding: 30px 8%;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background:
+        linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)),
+        url("https://images.unsplash.com/photo-1559511260-66a654ae982a?w=1600")
+        center/cover;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.logo {
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.hero-content {
+    max-width: 650px;
+    padding-bottom: 50px;
+}
+
+.eyebrow {
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: normal;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    max-width: 500px;
+}
+
+/* Main content */
+main {
+    width: 84%;
+    max-width: 1100px;
+    margin: 70px auto;
+}
+
+.intro {
+    max-width: 650px;
+    margin-bottom: 45px;
+}
+
+h2 {
+    font-family: Georgia, serif;
+    font-size: 2.2rem;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+/* Audio section */
+.audio-section {
+    background: #e5e8e2;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 65px;
+}
+
+.audio-section p {
+    margin: 10px 0 20px;
+    color: #59615b;
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+#playButton {
+    background: #263b35;
+    color: white;
+}
+
+#pauseButton {
+    background: white;
+    color: #263b35;
+}
+
+#audioStatus {
+    font-size: 13px;
+    color: #59615b;
+}
+
+/* Location section */
+.explore-section {
+    margin-bottom: 60px;
+}
+
+.location-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.location-button {
+    background: transparent;
+    border: 1px solid #263b35;
+    color: #263b35;
+}
+
+.location-button.active {
+    background: #263b35;
+    color: white;
+}
+
+.location-card {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.location-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.location-info {
+    padding: 35px;
+    align-self: center;
+}
+
+.location-info h3 {
+    font-family: Georgia, serif;
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 12px 0;
+}
+
+.location-info p {
+    color: #59615b;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #263b35;
+    color: white;
+    font-size: 13px;
+}
+
+/* Responsive design */
+@media (max-width: 700px) {
+    .location-card {
+        grid-template-columns: 1fr;
+    }
+
+    .location-card img {
+        height: 250px;
+    }
+
+    main {
+        width: 88%;
+    }
+
+    nav {
+        gap: 15px;
+    }
+}
