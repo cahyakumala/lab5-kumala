@@ -1,175 +1,95 @@
 
-/* ==================================
-   AUDIO PLAYER
-================================== */
+/* AUDIO PLAYER */
 
 const audio = document.getElementById("cityAudio");
-
 const playButton = document.getElementById("playButton");
 const pauseButton = document.getElementById("pauseButton");
-
 const audioStatus = document.getElementById("audioStatus");
 
 const audioProgress = document.getElementById("audioProgress");
-
-const currentTimeDisplay =
-    document.getElementById("currentTime");
-
-const durationDisplay =
-    document.getElementById("duration");
+const currentTimeDisplay = document.getElementById("currentTime");
+const durationDisplay = document.getElementById("duration");
 
 
-// Convert seconds into minutes and seconds
 function formatTime(seconds) {
-
     if (!Number.isFinite(seconds)) {
         return "00:00";
     }
 
     const minutes = Math.floor(seconds / 60);
-
-    const remainingSeconds = Math.floor(seconds % 60);
+    const secondsLeft = Math.floor(seconds % 60);
 
     return String(minutes).padStart(2, "0") + ":" +
-        String(remainingSeconds).padStart(2, "0");
-
+        String(secondsLeft).padStart(2, "0");
 }
 
 
-// Update the duration when audio information is loaded
+// Update the total duration
 function updateDuration() {
-
     if (Number.isFinite(audio.duration)) {
-
         audioProgress.max = audio.duration;
-
-        durationDisplay.textContent =
-            formatTime(audio.duration);
-
+        durationDisplay.textContent = formatTime(audio.duration);
     }
-
 }
 
 
-// Load audio metadata
-audio.addEventListener("loadedmetadata", function() {
-
-    updateDuration();
-
-});
+// Load audio information
+audio.addEventListener("loadedmetadata", updateDuration);
+audio.addEventListener("durationchange", updateDuration);
 
 
-// Also update duration if browser loads it later
-audio.addEventListener("durationchange", function() {
-
-    updateDuration();
-
-});
-
-
-// Play audio
+// Play button
 playButton.addEventListener("click", function() {
-
-    audioStatus.textContent = "Loading audio...";
-
-    audio.play()
-        .then(function() {
-
-            audioStatus.textContent =
-                "Now playing. Enjoy listening!";
-
-        })
-        .catch(function() {
-
-            audioStatus.textContent =
-                "Unable to play audio. Please check the MP3 file.";
-
-        });
-
+    audio.play().catch(function() {
+        audioStatus.textContent = "Unable to play audio. Check the MP3 file.";
+    });
 });
 
 
-// Pause audio
+// Pause button
 pauseButton.addEventListener("click", function() {
-
     audio.pause();
-
-    audioStatus.textContent =
-        "Soundscape paused.";
-
 });
 
 
-// Update progress and current time while playing
+// Update the time continuously as the audio plays
 audio.addEventListener("timeupdate", function() {
-
     audioProgress.value = audio.currentTime;
-
-    currentTimeDisplay.textContent =
-        formatTime(audio.currentTime);
-
-});
-
-
-// Let users seek forward or backward
-audioProgress.addEventListener("input", function() {
-
-    const selectedTime = Number(audioProgress.value);
-
-    currentTimeDisplay.textContent =
-        formatTime(selectedTime);
-
-});
-
-
-// Set audio position after the user releases the slider
-audioProgress.addEventListener("change", function() {
-
-    audio.currentTime = Number(audioProgress.value);
-
+    currentTimeDisplay.textContent = formatTime(audio.currentTime);
 });
 
 
 // Update status when audio starts
 audio.addEventListener("playing", function() {
-
-    audioStatus.textContent =
-        "Now playing. Enjoy listening!";
-
+    audioStatus.textContent = "Now playing. Enjoy listening!";
 });
 
 
-// Update status when audio is paused
+// Update status when paused
 audio.addEventListener("pause", function() {
-
-    if (!audio.ended && audio.currentTime > 0) {
-
-        audioStatus.textContent =
-            "Soundscape paused.";
-
+    if (!audio.ended) {
+        audioStatus.textContent = "Soundscape paused.";
     }
-
 });
 
 
-// Update status when audio finishes
+// Move audio when the progress bar is dragged
+audioProgress.addEventListener("input", function() {
+    audio.currentTime = Number(audioProgress.value);
+    currentTimeDisplay.textContent = formatTime(audio.currentTime);
+});
+
+
+// Reset when audio finishes
 audio.addEventListener("ended", function() {
-
-    audioStatus.textContent =
-        "The sound journey has ended. Thanks for listening!";
-
+    audioStatus.textContent = "Sound journey completed. Thanks for listening!";
 });
 
 
-// Handle audio errors
+// Handle errors
 audio.addEventListener("error", function() {
-
-    audioStatus.textContent =
-        "Audio file could not be found. Check the audio folder.";
-
+    audioStatus.textContent = "Audio file could not be loaded. Check the MP3 file.";
 });
-
-
 
 /* ==================================
    LOCATION INFORMATION
