@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Listening to Vancouver</title>
 
     <link rel="stylesheet" href="style.css">
@@ -21,13 +22,18 @@
 
         <div class="hero-content">
             <p class="eyebrow">A SOUND JOURNEY · BRITISH COLUMBIA</p>
+
             <h1>Listen to the<br>city around you.</h1>
+
             <p>
                 Vancouver is more than a place to see.
                 It is a place to hear. From quiet green spaces
                 to busy streets, every corner has its own sound.
             </p>
-            <a href="#soundscape" class="hero-button">Start listening ↓</a>
+
+            <a href="#soundscape" class="hero-button">
+                Start listening ↓
+            </a>
         </div>
 
         <div class="hero-bottom">
@@ -42,6 +48,7 @@
         <!-- Introduction -->
         <section class="intro">
             <p class="eyebrow">THE IDEA BEHIND THIS PROJECT</p>
+
             <h2>A different way to experience a city.</h2>
 
             <p>
@@ -58,14 +65,18 @@
 
             <div class="audio-text">
                 <p class="eyebrow">01 / PRESS PLAY</p>
+
                 <h2>Take a moment.<br>Just listen.</h2>
+
                 <p>
                     Close your eyes, take a breath, and explore
                     the different sounds that make up Vancouver.
                 </p>
             </div>
 
+
             <div class="audio-player">
+
                 <div class="audio-icon">♫</div>
 
                 <div class="audio-details">
@@ -74,32 +85,51 @@
                 </div>
 
                 <div class="audio-controls">
-                    <button id="playButton" aria-label="Play audio">
-                        ▶
+
+                    <button
+                        type="button"
+                        id="playButton"
+                        aria-label="Play soundscape"
+                        title="Play"
+                    >
+                        <span>▶</span>
                     </button>
 
-                    <button id="pauseButton" aria-label="Pause audio">
-                        Ⅱ
+                    <button
+                        type="button"
+                        id="pauseButton"
+                        aria-label="Pause soundscape"
+                        title="Pause"
+                    >
+                        <span>Ⅱ</span>
                     </button>
+
                 </div>
 
                 <p id="audioStatus" aria-live="polite">
                     Ready when you are.
                 </p>
+
             </div>
 
-            <audio id="cityAudio" preload="metadata">
-                <source src="audio/vancouver-soundscape.mp3" type="audio/mpeg">
+
+            <!-- Audio file -->
+            <audio
+                id="cityAudio"
+                src="audio/vancouver-soundscape.mp3"
+                preload="metadata"
+            >
                 Your browser does not support audio.
             </audio>
 
         </section>
 
 
-        <!-- Location section -->
+        <!-- Location explorer -->
         <section id="explore" class="explore-section">
 
             <div class="section-heading">
+
                 <div>
                     <p class="eyebrow">02 / EXPLORE THE CITY</p>
                     <h2>Three places, three different moods.</h2>
@@ -109,21 +139,34 @@
                     Choose a location and discover
                     what makes it sound different.
                 </p>
+
             </div>
 
 
             <!-- Location buttons -->
             <div class="location-buttons">
 
-                <button class="location-button active" data-location="park">
+                <button
+                    type="button"
+                    class="location-button active"
+                    data-location="park"
+                >
                     01 &nbsp; Stanley Park
                 </button>
 
-                <button class="location-button" data-location="downtown">
+                <button
+                    type="button"
+                    class="location-button"
+                    data-location="downtown"
+                >
                     02 &nbsp; Downtown
                 </button>
 
-                <button class="location-button" data-location="waterfront">
+                <button
+                    type="button"
+                    class="location-button"
+                    data-location="waterfront"
+                >
                     03 &nbsp; Waterfront
                 </button>
 
@@ -175,20 +218,34 @@
 
         <!-- Closing section -->
         <section class="closing">
+
             <p class="eyebrow">03 / A FINAL THOUGHT</p>
-            <h2>Sometimes, the best way to explore is to slow down and listen.</h2>
+
+            <h2>
+                Sometimes, the best way to explore
+                is to slow down and listen.
+            </h2>
+
             <p>
                 The city is always speaking. We just have to listen.
             </p>
+
         </section>
 
     </main>
 
 
+    <!-- Footer -->
     <footer>
-        <a href="#" class="footer-logo">LISTENING TO VANCOUVER</a>
+
+        <a href="#" class="footer-logo">
+            LISTENING TO VANCOUVER
+        </a>
+
         <p>Interactive Media Lab 5 · 2026</p>
+
         <p>Made as a small exploration of sound and place.</p>
+
     </footer>
 
 </body>
