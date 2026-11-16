@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Listening to Vancouver</title>
 
     <link rel="stylesheet" href="style.css">
@@ -12,7 +13,9 @@
 
 <body>
 
+    <!-- HERO SECTION -->
     <header class="hero">
+
         <nav>
             <a href="#" class="logo">LISTENING TO VANCOUVER</a>
             <a href="#explore" class="nav-link">Explore the city ↓</a>
@@ -20,80 +23,134 @@
 
         <div class="hero-content">
             <p class="eyebrow">A SOUND JOURNEY · BRITISH COLUMBIA</p>
+
             <h1>Listen to the<br>city around you.</h1>
+
             <p>
                 Vancouver is more than a place to see.
                 It is a place to hear. From quiet green spaces
                 to busy streets, every corner has its own sound.
             </p>
-            <a href="#soundscape" class="hero-button">Start listening ↓</a>
+
+            <a href="#soundscape" class="hero-button">
+                Start listening ↓
+            </a>
         </div>
 
         <div class="hero-bottom">
             <span>49° 16' N / 123° 07' W</span>
             <span>01 — 03 / EXPLORE</span>
         </div>
+
     </header>
+
 
     <main>
 
+        <!-- INTRODUCTION -->
         <section class="intro">
+
             <p class="eyebrow">THE IDEA BEHIND THIS PROJECT</p>
+
             <h2>A different way to experience a city.</h2>
+
             <p>
                 We often explore places through photographs and videos,
                 but what happens when we pay attention to the sounds
                 around us? This project takes a closer look at Vancouver
                 through its everyday soundscapes.
             </p>
+
         </section>
 
+
+        <!-- AUDIO SECTION -->
         <section id="soundscape" class="audio-section">
 
             <div class="audio-text">
+
                 <p class="eyebrow">01 / PRESS PLAY</p>
+
                 <h2>Take a moment.<br>Just listen.</h2>
+
                 <p>
                     Close your eyes, take a breath, and explore
                     the different sounds that make up Vancouver.
                 </p>
+
             </div>
 
+
             <div class="audio-player">
+
                 <div class="audio-icon">♫</div>
 
                 <div class="audio-details">
                     <h3>Vancouver Soundscape</h3>
-                    <p>A little collection of city sounds · 60–90 sec</p>
+                    <p>A little collection of city sounds · 3:50 min</p>
                 </div>
 
+
+                <!-- AUDIO PROGRESS BAR -->
+                <div class="audio-timeline">
+
+                    <input
+                        type="range"
+                        id="audioProgress"
+                        min="0"
+                        max="230"
+                        value="0"
+                        step="0.1"
+                        aria-label="Audio progress"
+                    >
+
+                    <div class="audio-time">
+                        <span id="currentTime">00:00</span>
+                        <span id="duration">03:50</span>
+                    </div>
+
+                </div>
+
+
+                <!-- AUDIO CONTROLS -->
                 <div class="audio-controls">
+
                     <button id="playButton" aria-label="Play audio">
                         <span>▶</span>
-                        <span>PLAY</span>
+                        PLAY
                     </button>
 
                     <button id="pauseButton" aria-label="Pause audio">
                         <span>Ⅱ</span>
-                        <span>PAUSE</span>
+                        PAUSE
                     </button>
+
                 </div>
 
                 <p id="audioStatus" aria-live="polite">
                     Ready when you are.
                 </p>
+
             </div>
 
+
             <audio id="cityAudio" preload="metadata">
-                <source src="audio/vancouver-soundscape.mp3" type="audio/mpeg">
+                <source
+                    src="audio/vancouver-soundscape.mp3"
+                    type="audio/mpeg"
+                >
                 Your browser does not support audio.
             </audio>
 
         </section>
 
+
+
+        <!-- EXPLORE SECTION -->
         <section id="explore" class="explore-section">
 
             <div class="section-heading">
+
                 <div>
                     <p class="eyebrow">02 / EXPLORE THE CITY</p>
                     <h2>Three places, three different moods.</h2>
@@ -103,33 +160,50 @@
                     Choose a location and discover
                     what makes it sound different.
                 </p>
+
             </div>
 
+
+            <!-- LOCATION BUTTONS -->
             <div class="location-buttons">
 
-                <button class="location-button active" data-location="park">
+                <button
+                    class="location-button active"
+                    data-location="park"
+                >
                     01 &nbsp; Stanley Park
                 </button>
 
-                <button class="location-button" data-location="downtown">
+                <button
+                    class="location-button"
+                    data-location="downtown"
+                >
                     02 &nbsp; Downtown
                 </button>
 
-                <button class="location-button" data-location="waterfront">
+                <button
+                    class="location-button"
+                    data-location="waterfront"
+                >
                     03 &nbsp; Waterfront
                 </button>
 
             </div>
 
+
+            <!-- LOCATION CONTENT -->
             <div class="location-card">
 
                 <div class="location-image">
+
                     <img
                         id="locationImage"
                         src="https://images.pexels.com/photos/34066293/pexels-photo-34066293.png"
                         alt="Stanley Park in Vancouver"
                     >
+
                 </div>
+
 
                 <div class="location-info">
 
@@ -137,23 +211,31 @@
                         01 / NATURE
                     </p>
 
-                    <h3 id="locationTitle">Stanley Park</h3>
+                    <h3 id="locationTitle">
+                        Stanley Park
+                    </h3>
 
                     <p id="locationDescription">
                         A peaceful natural space surrounded by trees,
                         fresh air, birds, and the sound of wind.
                     </p>
 
+
                     <div class="location-divider"></div>
 
-                    <p class="sound-label">SOUNDS TO IMAGINE</p>
+
+                    <p class="sound-label">
+                        SOUNDS TO IMAGINE
+                    </p>
 
                     <p id="locationSounds" class="location-sounds">
                         Birds singing · Leaves moving · Ocean breeze
                     </p>
 
                 </div>
+
             </div>
+
 
             <p class="explore-note">
                 Different places, different sounds, one city.
@@ -161,7 +243,11 @@
 
         </section>
 
+
+
+        <!-- CLOSING SECTION -->
         <section class="closing">
+
             <p class="eyebrow">03 / A FINAL THOUGHT</p>
 
             <h2>
@@ -172,15 +258,26 @@
             <p>
                 The city is always speaking. We just have to listen.
             </p>
+
         </section>
 
     </main>
 
+
+
+    <!-- FOOTER -->
     <footer>
-        <a href="#" class="footer-logo">LISTENING TO VANCOUVER</a>
+
+        <a href="#" class="footer-logo">
+            LISTENING TO VANCOUVER
+        </a>
+
         <p>Interactive Media Lab 5 · 2026</p>
+
         <p>Made as a small exploration of sound and place.</p>
+
     </footer>
+
 
 </body>
 </html>
