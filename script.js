@@ -1,17 +1,27 @@
 
-/* AUDIO PLAYER */
+/* ==================================
+   AUDIO PLAYER
+================================== */
 
 const audio = document.getElementById("cityAudio");
+
 const playButton = document.getElementById("playButton");
 const pauseButton = document.getElementById("pauseButton");
+
 const audioStatus = document.getElementById("audioStatus");
 
 const audioProgress = document.getElementById("audioProgress");
-const currentTimeDisplay = document.getElementById("currentTime");
-const durationDisplay = document.getElementById("duration");
+
+const currentTimeDisplay =
+    document.getElementById("currentTime");
+
+const durationDisplay =
+    document.getElementById("duration");
 
 
+// Convert seconds into minutes and seconds
 function formatTime(seconds) {
+
     if (!Number.isFinite(seconds)) {
         return "00:00";
     }
@@ -21,75 +31,130 @@ function formatTime(seconds) {
 
     return String(minutes).padStart(2, "0") + ":" +
         String(secondsLeft).padStart(2, "0");
+
 }
 
 
 // Update the total duration
 function updateDuration() {
+
     if (Number.isFinite(audio.duration)) {
+
         audioProgress.max = audio.duration;
-        durationDisplay.textContent = formatTime(audio.duration);
+
+        durationDisplay.textContent =
+            formatTime(audio.duration);
+
     }
+
 }
 
 
-// Load audio information
+// Load audio metadata
 audio.addEventListener("loadedmetadata", updateDuration);
 audio.addEventListener("durationchange", updateDuration);
 
 
-// Play button
+// Play audio
 playButton.addEventListener("click", function() {
-    audio.play().catch(function() {
-        audioStatus.textContent = "Unable to play audio. Check the MP3 file.";
-    });
+
+    audioStatus.textContent = "Loading audio...";
+
+    audio.play()
+        .then(function() {
+
+            audioStatus.textContent =
+                "Now playing. Enjoy listening!";
+
+        })
+        .catch(function() {
+
+            audioStatus.textContent =
+                "Unable to play audio. Please check the MP3 file.";
+
+        });
+
 });
 
 
-// Pause button
+// Pause audio
 pauseButton.addEventListener("click", function() {
+
     audio.pause();
+
 });
 
 
-// Update the time continuously as the audio plays
+// Update progress and current time while playing
 audio.addEventListener("timeupdate", function() {
+
     audioProgress.value = audio.currentTime;
-    currentTimeDisplay.textContent = formatTime(audio.currentTime);
+
+    currentTimeDisplay.textContent =
+        formatTime(audio.currentTime);
+
+});
+
+
+// Update time when user moves the slider
+audioProgress.addEventListener("input", function() {
+
+    const selectedTime = Number(audioProgress.value);
+
+    currentTimeDisplay.textContent =
+        formatTime(selectedTime);
+
+});
+
+
+// Set audio position when user releases the slider
+audioProgress.addEventListener("change", function() {
+
+    audio.currentTime = Number(audioProgress.value);
+
 });
 
 
 // Update status when audio starts
 audio.addEventListener("playing", function() {
-    audioStatus.textContent = "Now playing. Enjoy listening!";
+
+    audioStatus.textContent =
+        "Now playing. Enjoy listening!";
+
 });
 
 
-// Update status when paused
+// Update status when audio is paused
 audio.addEventListener("pause", function() {
+
     if (!audio.ended) {
-        audioStatus.textContent = "Soundscape paused.";
+
+        audioStatus.textContent =
+            "Soundscape paused.";
+
     }
+
 });
 
 
-// Move audio when the progress bar is dragged
-audioProgress.addEventListener("input", function() {
-    audio.currentTime = Number(audioProgress.value);
-    currentTimeDisplay.textContent = formatTime(audio.currentTime);
-});
-
-
-// Reset when audio finishes
+// Update status when audio finishes
 audio.addEventListener("ended", function() {
-    audioStatus.textContent = "Sound journey completed. Thanks for listening!";
+
+    audioStatus.textContent =
+        "The sound journey has ended. Thanks for listening!";
+
 });
 
 
-// Handle errors
+// Handle audio errors
 audio.addEventListener("error", function() {
-    audioStatus.textContent = "Audio file could not be loaded. Check the MP3 file.";
+
+    audioStatus.textContent =
+        "Audio file could not be found. Check the audio folder.";
+
 });
+
+
 
 /* ==================================
    LOCATION INFORMATION
