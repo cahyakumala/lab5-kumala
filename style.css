@@ -245,8 +245,6 @@ h2 {
     outline: none;
 }
 
-/* Progress bar track */
-
 #audioProgress::-webkit-slider-thumb {
     appearance: none;
     -webkit-appearance: none;
