@@ -1,5 +1,7 @@
 
-/* AUDIO PLAYER */
+/* ==================================
+   AUDIO PLAYER
+================================== */
 
 const audio = document.getElementById("cityAudio");
 
@@ -30,16 +32,37 @@ function formatTime(seconds) {
 
     return String(minutes).padStart(2, "0") + ":" +
         String(remainingSeconds).padStart(2, "0");
+
 }
 
 
-// Load audio duration
+// Update the duration when audio information is loaded
+function updateDuration() {
+
+    if (Number.isFinite(audio.duration)) {
+
+        audioProgress.max = audio.duration;
+
+        durationDisplay.textContent =
+            formatTime(audio.duration);
+
+    }
+
+}
+
+
+// Load audio metadata
 audio.addEventListener("loadedmetadata", function() {
 
-    audioProgress.max = audio.duration;
+    updateDuration();
 
-    durationDisplay.textContent =
-        formatTime(audio.duration);
+});
+
+
+// Also update duration if browser loads it later
+audio.addEventListener("durationchange", function() {
+
+    updateDuration();
 
 });
 
@@ -71,12 +94,13 @@ pauseButton.addEventListener("click", function() {
 
     audio.pause();
 
-    audioStatus.textContent = "Soundscape paused.";
+    audioStatus.textContent =
+        "Soundscape paused.";
 
 });
 
 
-// Update progress while audio is playing
+// Update progress and current time while playing
 audio.addEventListener("timeupdate", function() {
 
     audioProgress.value = audio.currentTime;
@@ -87,18 +111,26 @@ audio.addEventListener("timeupdate", function() {
 });
 
 
-// Allow users to move through the audio
+// Let users seek forward or backward
 audioProgress.addEventListener("input", function() {
 
-    audio.currentTime = audioProgress.value;
+    const selectedTime = Number(audioProgress.value);
 
     currentTimeDisplay.textContent =
-        formatTime(audioProgress.value);
+        formatTime(selectedTime);
 
 });
 
 
-// Update audio status when playing
+// Set audio position after the user releases the slider
+audioProgress.addEventListener("change", function() {
+
+    audio.currentTime = Number(audioProgress.value);
+
+});
+
+
+// Update status when audio starts
 audio.addEventListener("playing", function() {
 
     audioStatus.textContent =
@@ -107,7 +139,7 @@ audio.addEventListener("playing", function() {
 });
 
 
-// Update audio status when paused
+// Update status when audio is paused
 audio.addEventListener("pause", function() {
 
     if (!audio.ended && audio.currentTime > 0) {
@@ -120,7 +152,7 @@ audio.addEventListener("pause", function() {
 });
 
 
-// Update audio status when finished
+// Update status when audio finishes
 audio.addEventListener("ended", function() {
 
     audioStatus.textContent =
@@ -139,7 +171,9 @@ audio.addEventListener("error", function() {
 
 
 
-/* LOCATION INFORMATION */
+/* ==================================
+   LOCATION INFORMATION
+================================== */
 
 const locationData = {
 
@@ -200,7 +234,9 @@ const locationData = {
 
 
 
-/* LOCATION BUTTON INTERACTIONS */
+/* ==================================
+   LOCATION BUTTON INTERACTIONS
+================================== */
 
 const locationButtons =
     document.querySelectorAll(".location-button");
@@ -230,11 +266,13 @@ locationButtons.forEach(function(button) {
             locationData[button.dataset.location];
 
 
-        // Update image and text
+        // Update image
         locationImage.src = selectedLocation.image;
 
         locationImage.alt = selectedLocation.title;
 
+
+        // Update location text
         locationLabel.textContent =
             selectedLocation.label;
 
