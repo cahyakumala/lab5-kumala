@@ -164,64 +164,101 @@ h2 {
     max-width: 350px;
 }
 
+
+/* Audio player */
 .audio-player {
     background: #f9f8f4;
-    padding: 25px;
-    border-radius: 5px;
+    padding: 30px;
+    border-radius: 8px;
+
     display: grid;
-    grid-template-columns: 45px 1fr;
-    gap: 15px;
+    grid-template-columns: 55px 1fr;
+    gap: 18px;
     align-items: center;
 }
 
 .audio-icon {
-    width: 45px;
-    height: 45px;
+    width: 55px;
+    height: 55px;
     background: #283b34;
     color: white;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 22px;
+
+    font-size: 25px;
     border-radius: 50%;
 }
 
 .audio-details h3 {
-    font-size: 15px;
-    margin-bottom: 3px;
+    font-size: 16px;
+    margin-bottom: 4px;
 }
 
 .audio-details p {
     color: #7a817b;
-    font-size: 11px;
+    font-size: 12px;
 }
 
+
+/* Large round audio buttons */
 .audio-controls {
     display: flex;
-    gap: 8px;
-    margin-top: 10px;
+    align-items: center;
+    gap: 15px;
+    margin-top: 12px;
 }
 
 .audio-controls button {
-    width: 38px;
-    height: 38px;
-    border: 1px solid #283b34;
+    width: 58px;
+    height: 58px;
+    min-width: 58px;
+    min-height: 58px;
+    flex: 0 0 58px;
+
+    padding: 0;
+    border: 2px solid #283b34;
     border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     background: #283b34;
     color: white;
-    transition: 0.2s;
+
+    font-size: 21px;
+    line-height: 1;
+
+    transition: background 0.2s, transform 0.2s;
+}
+
+.audio-controls button span {
+    display: block;
+    line-height: 1;
 }
 
 .audio-controls button:hover {
     background: #d9a879;
     border-color: #d9a879;
+    transform: scale(1.06);
+}
+
+.audio-controls button:active {
+    transform: scale(0.95);
+}
+
+.audio-controls button:focus-visible {
+    outline: 3px solid #d9a879;
+    outline-offset: 4px;
 }
 
 #audioStatus {
     grid-column: 1 / 3;
     color: #7a817b;
-    font-size: 12px;
-    margin-top: 5px;
+    font-size: 13px;
+    margin-top: 8px;
 }
 
 
@@ -248,6 +285,8 @@ h2 {
     font-size: 13px;
 }
 
+
+/* Location buttons */
 .location-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -280,7 +319,7 @@ h2 {
 .location-card {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
-    background: #fff;
+    background: white;
     overflow: hidden;
 }
 
@@ -365,11 +404,13 @@ h2 {
 footer {
     background: #e7e9e1;
     padding: 35px 8%;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 15px;
+
     font-size: 11px;
     color: #68736c;
 }
@@ -420,6 +461,18 @@ footer {
         padding: 30px 22px;
         gap: 30px;
         margin-bottom: 75px;
+    }
+
+    .audio-player {
+        padding: 22px;
+    }
+
+    .audio-controls button {
+        width: 58px;
+        height: 58px;
+        min-width: 58px;
+        min-height: 58px;
+        flex-basis: 58px;
     }
 
     .section-heading {
