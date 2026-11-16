@@ -1,42 +1,65 @@
 
-// AUDIO PLAYER
+/* AUDIO PLAYER */
 
 const audio = document.getElementById("cityAudio");
 const playButton = document.getElementById("playButton");
 const pauseButton = document.getElementById("pauseButton");
 const audioStatus = document.getElementById("audioStatus");
 
-// Play button
+
+// Play audio
 playButton.addEventListener("click", function() {
+
+    audioStatus.textContent = "Loading audio...";
 
     audio.play()
         .then(function() {
             audioStatus.textContent = "Now playing. Enjoy listening!";
         })
         .catch(function() {
-            audioStatus.textContent = "Audio file not found. Please check the file.";
+            audioStatus.textContent = "Unable to play audio. Please check the MP3 file.";
         });
 
 });
 
-// Pause button
+
+// Pause audio
 pauseButton.addEventListener("click", function() {
 
-    audio.pause();
-
-    if (audio.currentTime > 0 && !audio.ended) {
-        audioStatus.textContent = "Soundscape paused.";
+    if (!audio.paused) {
+        audio.pause();
     } else {
         audioStatus.textContent = "Audio is not playing yet.";
     }
 
 });
 
-// Update status when audio finishes
+
+// Update status when audio starts
+audio.addEventListener("playing", function() {
+    audioStatus.textContent = "Now playing. Enjoy listening!";
+});
+
+
+// Update status when audio is paused
+audio.addEventListener("pause", function() {
+
+    if (!audio.ended && audio.currentTime > 0) {
+        audioStatus.textContent = "Soundscape paused.";
+    }
+
+});
+
+
+// Update status when audio ends
 audio.addEventListener("ended", function() {
-
     audioStatus.textContent = "Sound journey completed. Thanks for listening!";
+});
 
+
+// Show an error if the audio file cannot load
+audio.addEventListener("error", function() {
+    audioStatus.textContent = "Audio file could not be found. Check the audio folder.";
 });
 
 
@@ -82,16 +105,15 @@ const locationDescription = document.getElementById("locationDescription");
 const locationSounds = document.getElementById("locationSounds");
 
 
-// CHANGE LOCATION WHEN BUTTON IS CLICKED
+// CHANGE LOCATION WHEN A BUTTON IS CLICKED
 
 locationButtons.forEach(function(button) {
 
     button.addEventListener("click", function() {
 
-        // Get the selected location
         const selectedLocation = locationData[button.dataset.location];
 
-        // Update the image and text
+        // Update image and text
         locationImage.src = selectedLocation.image;
         locationImage.alt = selectedLocation.title;
 
@@ -100,12 +122,11 @@ locationButtons.forEach(function(button) {
         locationDescription.textContent = selectedLocation.description;
         locationSounds.textContent = selectedLocation.sounds;
 
-        // Remove active class from all buttons
+        // Update active button
         locationButtons.forEach(function(item) {
             item.classList.remove("active");
         });
 
-        // Highlight the selected button
         button.classList.add("active");
 
     });
