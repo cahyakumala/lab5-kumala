@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,9 +23,14 @@
         </nav>
 
         <div class="hero-content">
-            <p class="eyebrow">A SOUND JOURNEY · BRITISH COLUMBIA</p>
 
-            <h1>Listen to the<br>city around you.</h1>
+            <p class="eyebrow">
+                A SOUND JOURNEY · BRITISH COLUMBIA
+            </p>
+
+            <h1>
+                Listen to the<br>city around you.
+            </h1>
 
             <p>
                 Vancouver is more than a place to see.
@@ -35,6 +41,7 @@
             <a href="#soundscape" class="hero-button">
                 Start listening ↓
             </a>
+
         </div>
 
         <div class="hero-bottom">
@@ -71,7 +78,9 @@
 
                 <p class="eyebrow">01 / PRESS PLAY</p>
 
-                <h2>Take a moment.<br>Just listen.</h2>
+                <h2>
+                    Take a moment.<br>Just listen.
+                </h2>
 
                 <p>
                     Close your eyes, take a breath, and explore
@@ -81,17 +90,22 @@
             </div>
 
 
+            <!-- AUDIO PLAYER -->
             <div class="audio-player">
 
-                <div class="audio-icon">♫</div>
+                <div class="audio-header">
 
-                <div class="audio-details">
-                    <h3>Vancouver Soundscape</h3>
-                    <p>A little collection of city sounds · 3:50 min</p>
+                    <div class="audio-icon">♫</div>
+
+                    <div class="audio-details">
+                        <h3>Vancouver Soundscape</h3>
+                        <p>A little collection of city sounds</p>
+                    </div>
+
                 </div>
 
 
-                <!-- AUDIO PROGRESS BAR -->
+                <!-- PROGRESS BAR -->
                 <div class="audio-timeline">
 
                     <input
@@ -105,27 +119,45 @@
                     >
 
                     <div class="audio-time">
-                        <span id="currentTime">00:00</span>
-                        <span id="duration">03:50</span>
+
+                        <span class="time-display">
+                            <strong id="currentTime">00:00</strong>
+                            <span class="time-separator"> / </span>
+                            <strong id="duration">03:50</strong>
+                        </span>
+
+                        <span class="time-label">
+                            SOUND JOURNEY
+                        </span>
+
                     </div>
 
                 </div>
 
 
-                <!-- AUDIO CONTROLS -->
+                <!-- PLAYER BUTTONS -->
                 <div class="audio-controls">
 
-                    <button id="playButton" aria-label="Play audio">
+                    <button
+                        id="playButton"
+                        class="play-button"
+                        aria-label="Play audio"
+                    >
                         <span>▶</span>
                         PLAY
                     </button>
 
-                    <button id="pauseButton" aria-label="Pause audio">
+                    <button
+                        id="pauseButton"
+                        class="pause-button"
+                        aria-label="Pause audio"
+                    >
                         <span>Ⅱ</span>
                         PAUSE
                     </button>
 
                 </div>
+
 
                 <p id="audioStatus" aria-live="polite">
                     Ready when you are.
@@ -134,26 +166,33 @@
             </div>
 
 
+            <!-- AUDIO FILE -->
             <audio id="cityAudio" preload="metadata">
+
                 <source
                     src="audio/vancouver-soundscape.mp3"
                     type="audio/mpeg"
                 >
+
                 Your browser does not support audio.
+
             </audio>
 
         </section>
 
 
 
-        <!-- EXPLORE SECTION -->
+        <!-- EXPLORE LOCATIONS -->
         <section id="explore" class="explore-section">
 
             <div class="section-heading">
 
                 <div>
                     <p class="eyebrow">02 / EXPLORE THE CITY</p>
-                    <h2>Three places, three different moods.</h2>
+
+                    <h2>
+                        Three places, three different moods.
+                    </h2>
                 </div>
 
                 <p class="section-note">
@@ -191,7 +230,7 @@
             </div>
 
 
-            <!-- LOCATION CONTENT -->
+            <!-- LOCATION CARD -->
             <div class="location-card">
 
                 <div class="location-image">
@@ -245,7 +284,7 @@
 
 
 
-        <!-- CLOSING SECTION -->
+        <!-- CLOSING -->
         <section class="closing">
 
             <p class="eyebrow">03 / A FINAL THOUGHT</p>
